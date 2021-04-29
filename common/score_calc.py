@@ -2,6 +2,9 @@ import random
 #from typing import Tuple
 
 def score_calc(income):
+    income = float(income)
+    print(type(income))
+    print(income)
     num = random.randint(1, 999)
     if num <= 299:
         credit = 0.0

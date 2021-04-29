@@ -4,7 +4,7 @@ import pymongo
 
 
 class Database:
-    URI = "mongodb://127.0.0.1:27017/cards"
+    URI = "mongodb://127.0.0.1:27017/credit_cards"
     DATABASE = pymongo.MongoClient(URI).get_default_database()
 
     @staticmethod

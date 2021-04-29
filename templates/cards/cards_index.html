@@ -2,28 +2,29 @@
 
 {% block content %}
 <header>
-    <h1>Cards</h1>
+    <h1>Credit Cards</h1>
 </header>
 <section>
     <div class="list-group">
         {% for card in cards %}
         <div class="list-group-item">
-            <h4>Card</h4>
+            <h4 class="list-group-item-heading">{{ card.cpf }}</h4>
             <p>
                 <a href="{{card._id}}">{{ card._id }}</a>
                 <a href="{{card.cpf}}">{{ card.cpf }}</a>
                 <a href="{{card.income}}">{{ card.income }}</a>
-                <a href="{{card.score}}">{{ card.score }}</a>
-                <a href="{{card.credit}}">{{ card.credit }}</a>
             </p>
+            <a class="btn btn-primary mt-3" href="{{ url_for('cards.create_card', card_id=card._id) }}">
+                Create new card
+            </a>
 
+            <a class="btn btn-danger" href="{{ url_for('cards.delete_card', card_id=card._id)}}" role="button">
+                Delete Card!!!
+            </a>
         </div>
         {% endfor %}
     </div>
 
-    <a class="btn btn-primary mt-3" href="{{ url_for('cards.create_card') }}">
-        Create new card
-    </a>
 
 </section>
 {% endblock %}
