@@ -13,8 +13,9 @@
                 <a href="{{card._id}}">{{ card._id }}</a>
                 <a href="{{card.cpf}}">{{ card.cpf }}</a>
                 <a href="{{card.income}}">{{ card.income }}</a>
+                <a href="{{card.score}}">{{ card.score }}</a>
+                <a href="{{card.credit}}">{{ card.credit }}</a>
             </p>
-
 
             <a class="btn btn-danger" href="{{ url_for('cards.delete_card', card_id=card._id)}}" role="button">
                 Delete Card!!!

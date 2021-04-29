@@ -15,9 +15,9 @@ def create_card():
     if request.method == 'POST':
         cpf = request.form['cpf']
         income = request.form['income']
-        # score = score_calc(float(income))[0]
-        # credit = score_calc(float(income))[1]
-        Card(cpf, income).save_to_mongo()
+        score = score_calc(float(income))[0]
+        credit = score_calc(float(income))[1]
+        Card(cpf, income, score, credit).save_to_mongo()
         print("Saved to DB")
 
     return render_template("cards/new_card.html")
