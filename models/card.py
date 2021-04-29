@@ -1,10 +1,9 @@
-import random
 from dataclasses import dataclass, field
 import uuid
 from typing import Dict
 from models.model import Model
-from common.database import Database
-from common import score_calc
+
+
 
 @dataclass
 class Card(Model):
@@ -18,9 +17,7 @@ class Card(Model):
         return {
             "_id": self._id,
             "cpf": self.cpf,
-            "income": self.income,
-            "score": score_calc(self.income)[0],
-            "credit": score_calc(self.income)[1]
+            "income": self.income
         }
 
     @classmethod

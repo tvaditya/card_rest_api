@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, request, redirect, url_for
 from models.card import Card
+# from common.score_calc import score_calc
 
 card_blueprint = Blueprint('cards', __name__)
 
@@ -17,10 +18,10 @@ def create_card():
 
         Card(cpf, income).save_to_mongo()
 
-        return render_template("cards/new_card.html")
+    return render_template("cards/new_card.html")
 
 
 @card_blueprint.route('/delete/<string:card_id>')
 def delete_card(card_id):
     Card.get_by_id().remove_from_mongo()
-    return redirect(url_for('index'))
+    return redirect(url_for('.index'))
