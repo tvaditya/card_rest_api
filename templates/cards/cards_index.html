@@ -14,9 +14,7 @@
                 <a href="{{card.cpf}}">{{ card.cpf }}</a>
                 <a href="{{card.income}}">{{ card.income }}</a>
             </p>
-            <a class="btn btn-primary mt-3" href="{{ url_for('cards.create_card', card_id=card._id) }}">
-                Create new card
-            </a>
+
 
             <a class="btn btn-danger" href="{{ url_for('cards.delete_card', card_id=card._id)}}" role="button">
                 Delete Card!!!
@@ -24,7 +22,9 @@
         </div>
         {% endfor %}
     </div>
-
+            <a class="btn btn-primary mt-3" href="{{ url_for('cards.create_card', card_id=card._id) }}">
+                Create new card
+            </a>
 
 </section>
 {% endblock %}
