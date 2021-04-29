@@ -10,11 +10,12 @@
         <div class="list-group-item">
             <h4 class="list-group-item-heading">{{ card.cpf }}</h4>
             <p>
-                <a href="{{card._id}}">{{ card._id }}</a>
-                <a href="{{card.cpf}}">{{ card.cpf }}</a>
-                <a href="{{card.income}}">{{ card.income }}</a>
-                <a href="{{card.score}}">{{ card.score }}</a>
-                <a href="{{card.credit}}">{{ card.credit }}</a>
+                <ul>
+                    <li>ID: <a href="{{card._id}}">{{ card._id }}</a></li>
+                    <li>INCOME: <a href="{{card.income}}">{{ card.income }}</a></li>
+                    <li>SCORE: <a href="{{card.score}}">{{ card.score }}</a></li>
+                    <li>CREDIT: <a href="{{card.credit}}">{{ card.credit }}</a></li>
+                </ul>
             </p>
 
             <a class="btn btn-danger" href="{{ url_for('cards.delete_card', card_id=card._id)}}" role="button">

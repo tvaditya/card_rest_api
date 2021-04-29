@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<div>
+<h3>Enter CPF and INCOME Values</h3>
+<form method="POST" action="{{ url_for('cards.create_card') }}">
+    {{ form.csrf_token }}
+    {{ form.cpf.label }}
+    {{ form.cpf(size=15) }}
+    {{ form.income.label }}
+    {{ form.income(size=15) }}
+
+    <input type="submit" value="Submit">
+</form>
+</div>
+{% endblock %}

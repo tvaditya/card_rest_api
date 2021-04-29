@@ -1,6 +1,12 @@
 from flask import Blueprint, render_template, request, redirect, url_for
+from flask_wtf import FlaskForm
+from wtforms import StringField, validators
 from models.card import Card
 from common.score_calc import score_calc
+
+class  CardForm(FlaskForm):
+    cpf = StringField('CPF: ', [validators.Length(min=11, max=11), validators.DataRequired()])
+    income = StringField('INCOME: ', [validators.DataRequired()])
 
 card_blueprint = Blueprint('cards', __name__)
 
@@ -12,15 +18,16 @@ def index():
 
 @card_blueprint.route('/new', methods=['GET', 'POST'])
 def create_card():
-    if request.method == 'POST':
-        cpf = request.form['cpf']
-        income = request.form['income']
+    form = CardForm()
+    if request.method == 'POST' and form.validate_on_submit():
+        cpf = form.cpf.data
+        income = form.income.data
         score = score_calc(float(income))[0]
         credit = score_calc(float(income))[1]
         Card(cpf, income, score, credit).save_to_mongo()
         print("Saved to DB")
 
-    return render_template("cards/new_card.html")
+    return render_template("cards/create_card.html", form=form, pageTitle="Create Credit Card Form")
 
 
 # @card_blueprint.route('/edit/<string:card_id>', methods=['GET', 'POST'])

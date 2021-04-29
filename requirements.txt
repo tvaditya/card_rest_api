@@ -1,3 +1,5 @@
 Flask
+WTForms
+Flask-WTF
 pymongo
 uuid
