@@ -9,7 +9,7 @@ def index():
     return render_template('cards/cards_index.html', cards=cards)
 
 
-@card_blueprint.route('/new', methods=['POST'])
+@card_blueprint.route('/new', methods=['GET', 'POST'])
 def create_card():
     if request.method == 'POST':
         cpf = request.form['cpf']
