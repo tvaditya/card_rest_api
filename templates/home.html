@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="jumbotron">
+        <h1 class="display-4">Credit Card Solicitation</h1>
+        <p class="lead">You can create a new credit card here.</p>
+        <hr class="my-4">
+        <p>You must enter the CPF and the magic starts!</p>
+        <p><a class="btn btn-primary btn-lg" href="{{ url_for('cards.create_card') }}" role="button">Insert CPF</a></p>
+    </div>
+{% endblock %}

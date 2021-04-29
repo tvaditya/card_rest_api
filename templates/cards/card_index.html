@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<header>
+    <h1>Stores</h1>
+</header>
+<section>
+    <div class="list-group">
+        {% for card in cards %}
+        <div class="list-group-item">
+            <h4>Card</h4>
+            <p>
+                <a href="{{card._id}}">{{ card._id }}</a>
+                <a href="{{card.cpf}}">{{ card.cpf }}</a>
+                <a href="{{card.income}}">{{ card.income }}</a>
+                <a href="{{card.credit}}">{{ card.credit }}</a>
+            </p>
+
+        </div>
+        {% endfor %}
+    </div>
+    {% if session['email'] == config.ADMIN %}
+    <a class="btn btn-primary mt-3" href="{{ url_for('cards.create_card') }}">
+        Create new card
+    </a>
+    {% endif %}
+</section>
+{% endblock %}

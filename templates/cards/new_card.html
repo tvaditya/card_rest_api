@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<header>
+    <h1>Create Store</h1>
+</header>
+<section class="create-card-form">
+    <form method="post">
+        <div class="form-group">
+            <label for="cpf">CPF</label>
+            <input type="text" class="form-control" id="cpf" name="cpf" placeholder="Insert a CPF">
+        </div>
+        <div class="form-group">
+            <label for="income">INCOME</label>
+            <input type="text" class="form-control" id="income" name="income" placeholder="Enter income"
+                aria-describedby="urlPrefixHelp">
+            <small id="urlPrefixHelp" class="form-text text-muted">
+                What is your base salary?
+            </small>
+        </div>
+        <button type="submit" class="btn btn-primary">Create</button>
+    </form>
+</section>
+{% endblock %}
