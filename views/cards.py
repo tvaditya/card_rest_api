@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect, url_for
+from flask import Blueprint, render_template, request, redirect, url_for, flash
 from flask_wtf import FlaskForm
 from wtforms import StringField, FloatField, validators
 from models.card import Card
@@ -27,10 +27,10 @@ def create_card():
         score, credit, approval = score_calc(income)
         # score = score_calc(float(income))[0]
         # credit = score_calc(float(income))[1]
-        return (f'<h1> The CPF {cpf} with Income {income} was approval status is {approval}')
+        flash(f'The CPF {cpf} with score {score} and Income {income} was approval status is {approval} ')
+
         Card(cpf, income, score, credit, approval).save_to_mongo()
         print("Saved to DB")
-
 
     return render_template("cards/create_card.html", form=form, pageTitle="Create Credit Card Form")
 

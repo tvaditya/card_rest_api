@@ -19,6 +19,16 @@
         {% endfor %}
     </ul>
     <input type="submit" value="Submit">
+    <p>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+              {% for message in messages %}
+                 {{ message }}
+              {% endfor %}
+           {% endif %}
+        {% endwith %}
+    </p>
+
 </form>
 </div>
 {% endblock %}
