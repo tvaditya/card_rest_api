@@ -5,7 +5,7 @@ from views.cards import card_blueprint
 app = Flask(__name__)
 
 app.secret_key = os.urandom(64)
-# app.config.update(ADMIN=os.environ.get("ADMIN"))
+app.config.update(ADMIN=os.environ.get("ADMIN"))
 
 app.register_blueprint(card_blueprint, url_prefix="/cards")
 

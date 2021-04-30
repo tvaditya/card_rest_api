@@ -3,3 +3,4 @@ WTForms
 Flask-WTF
 pymongo
 uuid
+uwsgi
