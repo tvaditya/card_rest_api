@@ -6,9 +6,18 @@
     {{ form.csrf_token }}
     {{ form.cpf.label }}
     {{ form.cpf(size=15) }}
+    <ul>
+        {% for error in form.cpf.errors %}
+            <li style="color:red;">{{ error }}</li>
+        {% endfor %}
+    </ul>
     {{ form.income.label }}
     {{ form.income(size=15) }}
-
+    <ul>
+        {% for error in form.income.errors %}
+            <li style="color:red;">{{ error }}</li>
+        {% endfor %}
+    </ul>
     <input type="submit" value="Submit">
 </form>
 </div>

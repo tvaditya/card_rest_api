@@ -11,6 +11,7 @@ class Card(Model):
     income: float
     score: int
     credit: float
+    approval: str
     _id: str = field(default_factory=lambda: uuid.uuid4().hex)
 
 
@@ -20,7 +21,8 @@ class Card(Model):
             "cpf": self.cpf,
             "income": self.income,
             "score": self.score,
-            "credit": self.credit
+            "credit": self.credit,
+            "approval": self.approval
         }
 
     @classmethod

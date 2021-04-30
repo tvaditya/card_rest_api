@@ -1,12 +1,13 @@
 from flask import Blueprint, render_template, request, redirect, url_for
 from flask_wtf import FlaskForm
-from wtforms import StringField, validators
+from wtforms import StringField, FloatField, validators
 from models.card import Card
 from common.score_calc import score_calc
 
 class  CardForm(FlaskForm):
-    cpf = StringField('CPF: ', [validators.Length(min=11, max=11), validators.DataRequired()])
-    income = StringField('INCOME: ', [validators.DataRequired()])
+    cpf = StringField('CPF: ', [validators.Length(min=11, max=11), validators.DataRequired(),
+                                validators.regexp('^\d+$', message='Must contain only numericals.')])
+    income = FloatField('INCOME: ', [validators.DataRequired(message='This field must is required and must contain only numericals.')])
 
 card_blueprint = Blueprint('cards', __name__)
 
@@ -19,13 +20,17 @@ def index():
 @card_blueprint.route('/new', methods=['GET', 'POST'])
 def create_card():
     form = CardForm()
+
     if request.method == 'POST' and form.validate_on_submit():
         cpf = form.cpf.data
         income = form.income.data
-        score = score_calc(float(income))[0]
-        credit = score_calc(float(income))[1]
-        Card(cpf, income, score, credit).save_to_mongo()
+        score, credit, approval = score_calc(income)
+        # score = score_calc(float(income))[0]
+        # credit = score_calc(float(income))[1]
+        return (f'<h1> The CPF {cpf} with Income {income} was approval status is {approval}')
+        Card(cpf, income, score, credit, approval).save_to_mongo()
         print("Saved to DB")
+
 
     return render_template("cards/create_card.html", form=form, pageTitle="Create Credit Card Form")
 
